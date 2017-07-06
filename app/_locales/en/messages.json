@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Tablerone",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Tab manager for Chrome with an interactive force-directed view of tabs and windows",
+    "description": "The description of the application"
+  }
+}
