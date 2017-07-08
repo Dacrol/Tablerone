@@ -10,6 +10,7 @@
   "default_locale": "en",
   "background": {
     "scripts": [
+      "lib/d3.v4.min.js",
       "scripts/chromereload.js",
       "scripts/background.js"
     ]
