@@ -6,9 +6,7 @@ chrome.runtime.onInstalled.addListener(details => {
   console.log('previousVersion', details.previousVersion);
 });
 
-chrome.browserAction.setBadgeText({text: '\'Allo'});
-
-console.log('\'Allo \'Allo! Event Page for Browser Action');
+//chrome.browserAction.setBadgeText({text: '\'Allo'});
 
 chrome.browserAction.onClicked.addListener(function(tab) {
   console.log(tabView);
@@ -17,12 +15,20 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
 function openTabView() {
   if (tabView) {
-    chrome.windows.update(tabView, {focused: true});
+    chrome.windows.update(tabView, {focused: true},  function() {
+    if (chrome.runtime.lastError) {
+        createTabView();
+    }
+});
   } else {
-    chrome.windows.create(
+    createTabView();
+  }
+}
+
+function createTabView() {
+  chrome.windows.create(
         {'url': 'tabview.html', 'width': 400, 'height': 600, 'type': 'popup', 'focused': true},
         function(chromeWindow) {
             tabView = chromeWindow.id;
-        })
-  }
+        });
 }
